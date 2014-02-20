@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLDecoder;
 import java.util.Date;
 import java.util.Properties;
 
@@ -48,7 +49,7 @@ public class req extends HttpServlet {
         PrintWriter fileout  = null;
         try {
             fileout = new PrintWriter(filename);
-            fileout.println(result);
+            fileout.println(URLDecoder.decode(result.toString(),"UTF-8"));
         } catch (FileNotFoundException e) {
             out.println("Information output error");
         }  finally {
